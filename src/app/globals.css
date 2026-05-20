@@ -3,25 +3,81 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --brand-primary:   #103e85;   /* deep royal blue from image 2 */
+  --brand-secondary: #F8FAFC;   /* slate-50 light background */
+  --brand-accent:    #981776;   /* vibrant magenta-purple from image 2 */
+  --brand-success:   #10B981;   /* clean emerald green */
+  --surface-1:       #FFFFFF;   /* pure white background */
+  --surface-2:       #F8FAFC;   /* slate-50 card surface */
+  --surface-3:       #F1F5F9;   /* slate-100 input/elevated surface */
+  --text-primary:    #0F172A;   /* rich slate-900 primary text */
+  --text-secondary:  #475569;   /* elegant slate-600 secondary text */
+  --border:          rgba(15, 23, 42, 0.08); /* subtle dark-translucent border */
+  --gradient-hero: linear-gradient(135deg, #103e85 0%, #981776 100%);
+  
+  --background: var(--surface-1);
+  --foreground: var(--text-primary);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-1);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+/* Custom utility animations */
+@keyframes gradient-slide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-slide {
+  background-size: 200% 200%;
+  animation: gradient-slide 6s ease infinite;
+}
+
+@keyframes slide-right {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-slide-right {
+  animation: slide-right 10s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Accessibility reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
   }
 }
