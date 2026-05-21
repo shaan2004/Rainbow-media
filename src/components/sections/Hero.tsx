@@ -340,7 +340,7 @@ export function Hero({ onOpenDemo }: HeroProps) {
           className="flex flex-col items-start gap-6 pointer-events-auto"
         >
           <Badge>
-            🏆 India&apos;s #1 Billing Software
+           Smart Billing Software
           </Badge>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight text-text-primary leading-tight">
