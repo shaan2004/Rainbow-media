@@ -25,35 +25,37 @@ export default function Home() {
     <>
       {/* Sticky Top Announcement */}
       <AnnouncementBar />
-      
+
       {/* Floating Scroll-aware Navigation */}
       <Navbar onOpenDemo={openDemoModal} />
-      
+
       <main>
         {/* Full-viewport Interactive Hero */}
         <Hero onOpenDemo={openDemoModal} />
-        
-        {/* Lazy Demo Video player */}
-        <VideoSection />
-        
-        {/* Grid featuring 6 product aspects */}
-        <Features />
-        
-        {/* Staggered Checklist & Invoicing Mobile Preview */}
-        <Benefits />
-        
-        {/* Pill-controlled Analytics Reports dashboard */}
-        <ReportsShowcase onOpenDemo={openDemoModal} />
-        
+
         {/* CRM management panels & live counters */}
         <CustomerMgmt />
-        
+
+        {/* Lazy Demo Video player */}
+        <VideoSection />
+
+        {/* Grid featuring 6 product aspects */}
+        <Features />
+
+        {/* Staggered Checklist & Invoicing Mobile Preview */}
+        <Benefits />
+
+        {/* Pill-controlled Analytics Reports dashboard */}
+        <ReportsShowcase onOpenDemo={openDemoModal} />
+
+
+
         {/* Currency toggling plans */}
         <Pricing onOpenDemo={openDemoModal} />
-        
+
         {/* Accordions */}
         <FAQ />
-        
+
         {/* Full-width Newsletter with Confetti triggers */}
         <CTASection />
       </main>

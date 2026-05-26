@@ -114,10 +114,10 @@ export function FAQ() {
           <p className="text-xs sm:text-sm font-semibold text-text-secondary tracking-wide">
             Still have questions?{" "}
             <a
-              href="#footer"
+              href="tel:+917305821333"
               className="text-brand-primary hover:text-brand-primary/80 hover:underline transition-colors decoration-brand-primary/50"
             >
-              Contact our Chennai support team →
+              Contact our support team →
             </a>
           </p>
         </div>
