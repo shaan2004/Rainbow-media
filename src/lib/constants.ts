@@ -188,5 +188,5 @@ export const FAQS = [
 export const OFFICE_CONTACT = {
   address: "Old No.83, New No.112, 2nd Floor, Anna Salai, Guindy, Chennai – 600032",
   phone: "+91 73058 21333",
-  email: "rainbowmedia@gmail.com",
+  email: "rainbowmedia1123@gmail.com",
 };

@@ -84,7 +84,7 @@ export function Pricing({ onOpenDemo }: PricingProps) {
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        <div className="grid grid-cols-3 gap-1 sm:gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
           {PRICING_PLANS.map((plan, index) => {
             const isRec = plan.recommended;
             const activePrice = currency === "inr" ? plan.price.inr : plan.price.usd;
@@ -98,60 +98,60 @@ export function Pricing({ onOpenDemo }: PricingProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 select-none ${
+                className={`relative rounded-xl sm:rounded-3xl p-2 sm:p-8 flex flex-col justify-between transition-all duration-300 select-none ${
                   isRec
-                    ? "border-2 border-brand-primary bg-surface-2 shadow-[0_20px_50px_rgba(2,132,199,0.1)] lg:scale-105 z-10"
+                    ? "border-2 border-brand-primary bg-surface-2 shadow-[0_20px_50px_rgba(2,132,199,0.1)] md:scale-105 z-10"
                     : "border border-border bg-surface-2 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-300/20"
                 }`}
               >
                 {/* Custom glowing tag for Recommended */}
                 {isRec && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
-                    <Badge className="bg-brand-primary text-white border-transparent text-[10px] tracking-widest font-extrabold">
+                  <div className="absolute -top-2 sm:-top-3.5 left-1/2 -translate-x-1/2 z-10">
+                    <div className="bg-brand-primary text-white text-[5px] sm:text-[10px] tracking-widest font-extrabold px-1 py-0.5 sm:px-2.5 sm:py-1 rounded-full uppercase whitespace-nowrap shadow-sm">
                       Most Popular
-                    </Badge>
+                    </div>
                   </div>
                 )}
 
                 {/* Plan Header */}
-                <div className="space-y-4 mb-6">
+                <div className="space-y-1 sm:space-y-4 mb-2 sm:mb-6">
                   <div className="flex justify-between items-center">
-                    <h3 className="text-xl font-extrabold text-text-primary">{plan.name}</h3>
-                    {isRec && <ShieldCheck className="text-brand-primary h-6 w-6" />}
+                    <h3 className="text-[10px] sm:text-xl font-extrabold text-text-primary">{plan.name}</h3>
+                    {isRec && <ShieldCheck className="text-brand-primary h-3 w-3 sm:h-6 sm:w-6" />}
                   </div>
-                  <p className="text-xs text-text-secondary font-medium leading-relaxed">
+                  <p className="text-[7px] sm:text-xs text-text-secondary font-medium leading-tight sm:leading-relaxed">
                     {plan.description}
                   </p>
 
-                  <div className="pt-2">
-                    <div className="flex items-baseline gap-1 text-text-primary">
-                      <span className="text-3xl sm:text-4xl font-heading font-extrabold">{priceSymbol}{activePrice.toLocaleString()}</span>
-                      <span className="text-text-secondary text-xs font-semibold">/year</span>
+                  <div className="pt-1 sm:pt-2">
+                    <div className="flex items-baseline gap-0.5 sm:gap-1 text-text-primary">
+                      <span className="text-xs sm:text-4xl font-heading font-extrabold">{priceSymbol}{activePrice.toLocaleString()}</span>
+                      <span className="text-text-secondary text-[7px] sm:text-xs font-semibold">/yr</span>
                     </div>
-                    <span className="text-[10px] sm:text-xs font-bold text-text-secondary/70 block mt-1">
-                      Renewal rate: {priceSymbol}{activeRenewal.toLocaleString()}/year
+                    <span className="text-[6px] sm:text-xs font-bold text-text-secondary/70 block mt-0.5 sm:mt-1">
+                      Renews: {priceSymbol}{activeRenewal.toLocaleString()}
                     </span>
                   </div>
                 </div>
 
-                <div className="border-t border-border my-6" />
+                <div className="border-t border-border my-2 sm:my-6" />
 
                 {/* Features List */}
-                <ul className="space-y-3.5 mb-8 flex-1">
+                <ul className="space-y-1.5 sm:space-y-3.5 mb-3 sm:mb-8 flex-1">
                   {plan.features.map((feat, fidx) => (
                     <li
                       key={fidx}
-                      className={`flex items-start gap-3 text-xs leading-relaxed font-semibold ${
+                      className={`flex items-start gap-1 sm:gap-3 text-[7px] sm:text-xs leading-normal sm:leading-relaxed font-semibold ${
                         feat.included ? "text-text-primary" : "text-text-secondary/50 line-through"
                       }`}
                     >
                       {feat.included ? (
-                        <span className="h-5 w-5 rounded-full bg-brand-success/10 border border-brand-success/20 flex items-center justify-center text-brand-success mt-0.5 shadow-sm shrink-0">
-                          <Check size={12} strokeWidth={2.5} />
+                        <span className="h-3.5 w-3.5 sm:h-5 sm:w-5 rounded-full bg-brand-success/10 border border-brand-success/20 flex items-center justify-center text-brand-success mt-0.5 shadow-sm shrink-0">
+                          <Check className="h-2 w-2 sm:h-3 sm:w-3" strokeWidth={2.5} />
                         </span>
                       ) : (
-                        <span className="h-5 w-5 rounded-full bg-surface-3 border border-border flex items-center justify-center text-text-secondary/40 mt-0.5 shrink-0">
-                          <X size={10} strokeWidth={2.5} />
+                        <span className="h-3.5 w-3.5 sm:h-5 sm:w-5 rounded-full bg-surface-3 border border-border flex items-center justify-center text-text-secondary/40 mt-0.5 shrink-0">
+                          <X className="h-1.5 w-1.5 sm:h-2.5 sm:w-2.5" strokeWidth={2.5} />
                         </span>
                       )}
                       <span>{feat.text}</span>
@@ -163,7 +163,7 @@ export function Pricing({ onOpenDemo }: PricingProps) {
                 <Button
                   onClick={onOpenDemo}
                   variant={isRec ? "primary" : "outline"}
-                  className="w-full py-3.5"
+                  className="w-full py-1.5 sm:py-3.5 text-[8px] sm:text-sm"
                 >
                   Book Demo
                 </Button>

@@ -75,7 +75,7 @@ export function Features() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8"
         >
           {FEATURES.map((feature, index) => {
             const IconComponent = iconMap[feature.iconName] || FileText;
@@ -84,19 +84,19 @@ export function Features() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className="group relative rounded-2xl border border-border bg-surface-2 p-6 sm:p-8 hover:bg-gradient-to-br hover:from-brand-primary hover:to-brand-accent hover:border-transparent hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(16,62,133,0.18)] transition-all duration-300 flex flex-col gap-5 select-none"
+                className="group relative rounded-xl sm:rounded-2xl border border-border bg-surface-2 p-3.5 sm:p-8 hover:bg-gradient-to-br hover:from-brand-primary hover:to-brand-accent hover:border-transparent hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(16,62,133,0.18)] transition-all duration-300 flex flex-col gap-3.5 sm:gap-5 select-none"
               >
                 {/* Icon wrapper */}
-                <div className="h-12 w-12 rounded-xl bg-surface-3 border border-border text-brand-accent flex items-center justify-center group-hover:scale-110 group-hover:bg-white/20 group-hover:border-white/10 group-hover:text-white transition-all duration-300 shadow-sm">
-                  <IconComponent size={24} />
+                <div className="h-8.5 w-8.5 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-surface-3 border border-border text-brand-accent flex items-center justify-center group-hover:scale-110 group-hover:bg-white/20 group-hover:border-white/10 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+                  <IconComponent className="h-4.5 w-4.5 sm:h-6 sm:w-6" />
                 </div>
 
                 {/* Content */}
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-text-primary group-hover:text-white transition-colors duration-300">
+                <div className="space-y-1 sm:space-y-2">
+                  <h3 className="text-[12px] sm:text-xl font-bold text-text-primary group-hover:text-white transition-colors duration-300 leading-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed font-medium line-clamp-3 group-hover:text-white/85 transition-colors duration-300">
+                  <p className="text-text-secondary text-[9.5px] sm:text-sm leading-normal sm:leading-relaxed font-medium line-clamp-3 group-hover:text-white/85 transition-colors duration-300">
                     {feature.description}
                   </p>
                 </div>

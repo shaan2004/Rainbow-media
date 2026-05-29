@@ -41,6 +41,15 @@ body {
   background: var(--brand-primary);
 }
 
+/* Hide scrollbar for Chrome, Safari, Opera and Firefox */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* Custom utility animations */
 @keyframes gradient-slide {
   0% { background-position: 0% 50%; }

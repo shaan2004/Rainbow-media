@@ -52,17 +52,40 @@ export function Benefits() {
       <div className="absolute top-1/3 right-1/4 w-[25rem] h-[25rem] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        {/* Mobile-only Centered Header */}
+        <div className="block sm:hidden text-center space-y-4 mb-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-2xl font-extrabold text-text-primary tracking-tight leading-tight"
+          >
+            Key Benefits of our billing software
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-xs text-text-secondary max-w-sm mx-auto font-medium leading-relaxed"
+          >
+            Enjoy high-speed cloud billing designed to eliminate transaction delays, optimize inventory levels in real-time, and save thousands in paper costs instantly.
+          </motion.p>
+        </div>
+
+        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-8 sm:gap-8 lg:gap-16 items-center">
           
           {/* Left Column: Interactive staggered list */}
-          <div className="space-y-8">
-            <div className="space-y-4">
+          <div className="space-y-8 w-full">
+            <div className="hidden sm:block space-y-4">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="text-3xl sm:text-4xl font-heading font-extrabold text-text-primary tracking-tight"
+                className="text-[14px] sm:text-3xl lg:text-4xl font-heading font-extrabold text-text-primary tracking-tight leading-tight"
               >
                 Key Benefits of our billing software
               </motion.h2>
@@ -71,7 +94,7 @@ export function Benefits() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text-secondary max-w-lg font-medium leading-relaxed"
+                className="text-[10px] sm:text-sm lg:text-base text-text-secondary max-w-lg font-medium leading-normal sm:leading-relaxed"
               >
                 Enjoy high-speed cloud billing designed to eliminate transaction delays, optimize inventory levels in real-time, and save thousands in paper costs instantly.
               </motion.p>
@@ -82,7 +105,7 @@ export function Benefits() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              className="grid grid-cols-2 gap-2 sm:gap-4 w-full"
             >
               {BENEFITS.map((benefit, index) => {
                 const isActive = activeNode === index;
@@ -92,20 +115,20 @@ export function Benefits() {
                     variants={listItemVariants}
                     onMouseEnter={() => setActiveNode(index)}
                     onMouseLeave={() => setActiveNode(null)}
-                    className={`flex items-center gap-3.5 p-4 rounded-2xl border transition-all duration-300 select-none cursor-pointer group ${
+                    className={`flex items-center gap-2 sm:gap-3.5 p-2 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-300 select-none cursor-pointer group ${
                       isActive
                         ? "bg-gradient-to-r from-brand-primary to-brand-accent border-transparent scale-[1.02] shadow-lg shadow-brand-primary/15"
                         : "bg-surface-2 border-border hover:border-slate-300 hover:bg-surface-3"
                     }`}
                   >
-                    <span className={`h-6.5 w-6.5 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    <span className={`h-5 w-5 sm:h-6.5 sm:w-6.5 rounded-full flex items-center justify-center transition-all duration-300 shrink-0 ${
                       isActive
                         ? "bg-white text-brand-primary scale-110 shadow-[0_0_15px_rgba(255,255,255,0.4)]"
                         : "bg-brand-primary/10 border border-brand-primary/20 text-brand-primary group-hover:scale-105"
                     }`}>
-                      <Check size={13} strokeWidth={isActive ? 3.5 : 2.5} />
+                      <Check className="h-2.5 w-2.5 sm:h-[13px] sm:w-[13px]" strokeWidth={isActive ? 3.5 : 2.5} />
                     </span>
-                    <span className={`text-sm font-bold transition-colors ${
+                    <span className={`text-[10px] sm:text-sm font-bold transition-colors ${
                       isActive ? "text-white" : "text-text-primary group-hover:text-brand-primary"
                     }`}>
                       {benefit}
@@ -117,7 +140,8 @@ export function Benefits() {
           </div>
 
           {/* Right Column: Semicircular Interactive Network Diagram */}
-          <div className="relative w-full max-w-[500px] h-[400px] mx-auto flex items-end justify-center overflow-visible select-none">
+          <div className="relative w-full flex items-center justify-center h-[260px] sm:h-[350px] lg:h-[400px] overflow-visible translate-x-0 mt-4 sm:mt-0">
+            <div className="w-[500px] h-[400px] shrink-0 relative flex items-end justify-center select-none scale-[0.52] xs:scale-[0.58] sm:scale-75 md:scale-90 lg:scale-100 origin-center sm:origin-bottom overflow-visible">
             
             {/* SVG Link Connections */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
@@ -264,6 +288,7 @@ export function Benefits() {
               );
             })}
 
+            </div>
           </div>
 
         </div>

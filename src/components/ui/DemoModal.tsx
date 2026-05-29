@@ -10,7 +10,6 @@ import { Button } from "./Button";
 
 const bookingSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
   businessType: z.string().min(1, "Please select your business type"),
   message: z.string().optional(),
@@ -37,7 +36,6 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
     resolver: zodResolver(bookingSchema),
     defaultValues: {
       fullName: "",
-      email: "",
       phone: "",
       businessType: "",
       message: "",
@@ -196,22 +194,6 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     )}
                   </div>
 
-                  {/* Email */}
-                  <div>
-                    <label className="block text-xs font-semibold text-text-secondary uppercase tracking-wider mb-1.5" htmlFor="email">
-                      Email Address
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="w-full rounded-xl border border-border bg-surface-3 px-4 py-3 text-text-primary placeholder-text-secondary/50 focus:border-brand-primary focus:outline-none transition-colors"
-                      placeholder="you@example.com"
-                      {...register("email")}
-                    />
-                    {errors.email && (
-                      <p className="text-brand-primary text-xs mt-1">{errors.email.message}</p>
-                    )}
-                  </div>
 
                   {/* Phone */}
                   <div>

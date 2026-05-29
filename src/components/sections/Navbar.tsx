@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mail, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -50,10 +50,42 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
           isScrolled
-            ? "bg-surface-1/80 backdrop-blur-xl border-b border-border py-4 shadow-md shadow-slate-200/40"
-            : "bg-transparent py-6"
+            ? "bg-surface-1/80 backdrop-blur-xl border-b border-border py-3 shadow-md shadow-slate-200/40"
+            : "bg-transparent pt-4 pb-6"
         )}
       >
+        {/* Sleek Contact Information Topbar */}
+        <div
+          className={cn(
+            "transition-all duration-300 overflow-hidden text-xs text-text-secondary border-b border-border/20 max-w-7xl mx-auto px-6 w-full",
+            isScrolled ? "h-0 opacity-0 mb-0 pointer-events-none" : "h-7 opacity-100 mb-3"
+          )}
+        >
+          <div className="flex justify-between items-center w-full pb-2">
+            <div className="flex items-center gap-4">
+              <a
+                href="mailto:billitrm@gmail.com"
+                className="flex items-center gap-1.5 hover:text-text-primary transition-colors text-[11px] sm:text-xs font-semibold"
+              >
+                <Mail size={12} className="text-brand-primary" />
+                <span>billitrm@gmail.com</span>
+              </a>
+              <span className="text-border/40 select-none">|</span>
+              <a
+                href="tel:+917305821333"
+                className="flex items-center gap-1.5 hover:text-text-primary transition-colors text-[11px] sm:text-xs font-semibold"
+              >
+                <Phone size={12} className="text-brand-primary" />
+                <span>+91 73058 21333</span>
+              </a>
+            </div>
+            <div className="hidden md:flex items-center gap-2 font-semibold text-text-tertiary">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Direct Support Desk</span>
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group select-none">
@@ -139,7 +171,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: NAV_LINKS.length * 0.05 }}
-              className="mt-auto space-y-4"
+              className="mt-auto space-y-6"
             >
               <Button
                 onClick={() => {
@@ -150,6 +182,18 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
               >
                 Book Demo
               </Button>
+
+              <div className="pt-6 border-t border-border flex flex-col gap-3.5 text-sm font-semibold text-text-secondary">
+                <div className="text-xs uppercase text-text-tertiary tracking-wider font-bold">Contact Support</div>
+                <a href="mailto:billitrm@gmail.com" className="flex items-center gap-2 hover:text-text-primary transition-colors">
+                  <Mail size={16} className="text-brand-primary" />
+                  <span>billitrm@gmail.com</span>
+                </a>
+                <a href="tel:+917305821333" className="flex items-center gap-2 hover:text-text-primary transition-colors">
+                  <Phone size={16} className="text-brand-primary" />
+                  <span>+91 73058 21333</span>
+                </a>
+              </div>
             </motion.div>
           </motion.div>
         )}

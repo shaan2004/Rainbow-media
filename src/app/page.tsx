@@ -14,6 +14,8 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 import { DemoModal } from "@/components/ui/DemoModal";
 import { Footer } from "@/components/sections/Footer";
+import { WhatsAppFloating } from "@/components/ui/WhatsAppFloating";
+
 
 export default function Home() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
@@ -63,8 +65,12 @@ export default function Home() {
       {/* Chennai Contact, Badges, Links */}
       <Footer />
 
+      {/* Floating WhatsApp Contact Icon */}
+      <WhatsAppFloating />
+
       {/* Accessible shift-tab focus trapped booking modal */}
       <DemoModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
+
     </>
   );
 }
