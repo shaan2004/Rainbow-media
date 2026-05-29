@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Check, X, ShieldCheck } from "lucide-react";
 import { PRICING_PLANS } from "@/lib/constants";
 import { Button } from "../ui/Button";
-import { Badge } from "../ui/Badge";
 
 interface PricingProps {
   onOpenDemo: () => void;
