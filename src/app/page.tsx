@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { AnnouncementBar } from "@/components/ui/AnnouncementBar";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { VideoSection } from "@/components/sections/VideoSection";
@@ -25,9 +24,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Sticky Top Announcement */}
-      <AnnouncementBar />
-
       {/* Floating Scroll-aware Navigation */}
       <Navbar onOpenDemo={openDemoModal} />
 

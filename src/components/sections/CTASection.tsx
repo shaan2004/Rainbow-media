@@ -9,7 +9,8 @@ import { Loader2, CheckCircle, ArrowRight } from "lucide-react";
 import confetti from "canvas-confetti";
 
 const newsletterSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
+  fullName: z.string().min(2, "Full name must be at least 2 characters"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
 });
 
 type NewsletterValues = z.infer<typeof newsletterSchema>;
@@ -25,13 +26,13 @@ export function CTASection() {
     formState: { errors },
   } = useForm<NewsletterValues>({
     resolver: zodResolver(newsletterSchema),
-    defaultValues: { email: "" },
+    defaultValues: { fullName: "", phone: "" },
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: NewsletterValues) => {
     setIsSubmitting(true);
     // Simulate server transaction
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     
     // Confetti pop!
     confetti({
@@ -40,6 +41,12 @@ export function CTASection() {
       origin: { y: 0.6 },
       colors: ["#FF6B35", "#00D4FF", "#00C896"],
     });
+
+    const formattedPhone = "917305821333";
+    const text = `Hi! I would like to get started with BillIT NOW.\n\n*My Details:*\n- *Name:* ${data.fullName}\n- *Phone:* ${data.phone}`;
+    const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(text)}`;
+    
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
     setIsSubmitting(false);
     setIsSuccess(true);
@@ -79,10 +86,10 @@ export function CTASection() {
                     <CheckCircle size={36} />
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-tight">
-                    You&apos;re on the early access list!
+                    Registration Completed!
                   </h3>
                   <p className="text-white/80 text-sm font-semibold max-w-sm">
-                    Thank you! We will update you with exclusive retail release logs and product launches shortly.
+                    Thank you! Your direct WhatsApp setup session has been initiated with our onboarding agent.
                   </p>
                 </motion.div>
               ) : (
@@ -103,31 +110,49 @@ export function CTASection() {
                   {/* Inline Newsletter Form */}
                   <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="w-full max-w-md flex flex-col sm:flex-row gap-3 pt-3"
+                    className="w-full max-w-md flex flex-col gap-3.5 pt-3"
                   >
-                    <div className="flex-1 relative">
-                      <input
-                        type="email"
-                        placeholder="Enter your email address"
-                        className="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3.5 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm"
-                        {...register("email")}
-                      />
-                      {errors.email && (
-                        <p className="text-white text-xs font-bold text-left mt-1.5 pl-1 absolute sm:static">
-                          {errors.email.message}
-                        </p>
-                      )}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+                      {/* Name input */}
+                      <div className="relative text-left">
+                        <input
+                          type="text"
+                          placeholder="Enter your name"
+                          className="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3.5 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-semibold"
+                          {...register("fullName")}
+                        />
+                        {errors.fullName && (
+                          <p className="text-white text-xs font-bold mt-1.5 pl-1">
+                            {errors.fullName.message}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Phone input */}
+                      <div className="relative text-left">
+                        <input
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          className="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3.5 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-semibold"
+                          {...register("phone")}
+                        />
+                        {errors.phone && (
+                          <p className="text-white text-xs font-bold mt-1.5 pl-1">
+                            {errors.phone.message}
+                          </p>
+                        )}
+                      </div>
                     </div>
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex items-center justify-center rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 disabled:pointer-events-none disabled:opacity-50 bg-white text-brand-primary hover:bg-white/90 hover:shadow-lg shrink-0 font-extrabold h-[48px] px-6 text-sm"
+                      className="inline-flex items-center justify-center rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 active:scale-95 disabled:pointer-events-none disabled:opacity-50 bg-white text-brand-primary hover:bg-white/90 hover:shadow-lg shrink-0 font-extrabold h-[48px] px-6 text-sm w-full mt-1"
                     >
                       {isSubmitting ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin text-brand-primary" />
-                          Subscribing...
+                          Submitting...
                         </>
                       ) : (
                         <span className="flex items-center gap-1.5 text-brand-primary">

@@ -11,7 +11,7 @@ import { Button } from "./Button";
 const bookingSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  businessType: z.string().min(1, "Please select your business type"),
+  businessType: z.string().min(1, "Please enter your business type"),
   message: z.string().optional(),
 });
 
@@ -98,10 +98,19 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
     return () => window.removeEventListener("keydown", handleTabKey);
   }, [isOpen]);
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: BookingFormValues) => {
     setIsSubmitting(true);
     // Simulate API round-trip
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    
+    // Redirect to WhatsApp with pre-filled details
+    const formattedPhone = "917305821333";
+    const baseText = `Hi! I would like to book a demo for BillIT NOW.\n\n*My Details:*\n- *Name:* ${data.fullName}\n- *Phone:* ${data.phone}\n- *Business Type:* ${data.businessType}`;
+    const text = data.message ? `${baseText}\n- *Message:* ${data.message}` : baseText;
+    const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(text)}`;
+    
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    
     setIsSubmitting(false);
     setIsSuccess(true);
     reset();
@@ -217,18 +226,13 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     <label className="block text-xs font-semibold text-text-secondary uppercase tracking-wider mb-1.5" htmlFor="businessType">
                       Business Type
                     </label>
-                    <select
+                    <input
                       id="businessType"
-                      className="w-full rounded-xl border border-border bg-surface-3 px-4 py-3 text-text-primary focus:border-brand-primary focus:outline-none transition-colors appearance-none cursor-pointer"
+                      type="text"
+                      className="w-full rounded-xl border border-border bg-surface-3 px-4 py-3 text-text-primary placeholder-text-secondary/50 focus:border-brand-primary focus:outline-none transition-colors"
+                      placeholder="e.g. Retail, Wholesale, Cafe"
                       {...register("businessType")}
-                    >
-                      <option value="" disabled className="bg-surface-3 text-text-primary">Select your business type</option>
-                      <option value="retail" className="bg-surface-3 text-text-primary">Retail Shop / Kirana</option>
-                      <option value="wholesale" className="bg-surface-3 text-text-primary">Wholesale Store</option>
-                      <option value="restaurant" className="bg-surface-3 text-text-primary">Restaurant / Cafe</option>
-                      <option value="service" className="bg-surface-3 text-text-primary">Service-Based Business</option>
-                      <option value="other" className="bg-surface-3 text-text-primary">Other Enterprise</option>
-                    </select>
+                    />
                     {errors.businessType && (
                       <p className="text-brand-primary text-xs mt-1">{errors.businessType.message}</p>
                     )}

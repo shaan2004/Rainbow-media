@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Mail, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, ANNOUNCEMENT_TEXT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/Button";
 
@@ -48,45 +48,31 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-0",
           isScrolled
-            ? "bg-surface-1/80 backdrop-blur-xl border-b border-border py-3 shadow-md shadow-slate-200/40"
-            : "bg-transparent pt-4 pb-6"
+            ? "bg-surface-1/80 backdrop-blur-xl border-b border-border shadow-md shadow-slate-200/40"
+            : "bg-transparent"
         )}
       >
-        {/* Sleek Contact Information Topbar */}
+        {/* Interactive Offer Banner */}
         <div
           className={cn(
-            "transition-all duration-300 overflow-hidden text-xs text-text-secondary border-b border-border/20 max-w-7xl mx-auto px-6 w-full",
-            isScrolled ? "h-0 opacity-0 mb-0 pointer-events-none" : "h-7 opacity-100 mb-3"
+            "transition-all duration-300 overflow-hidden w-full flex items-center justify-center bg-gradient-hero select-none border-b border-white/5 relative z-50",
+            isScrolled ? "h-0 opacity-0" : "h-10 opacity-100"
           )}
         >
-          <div className="flex justify-between items-center w-full pb-2">
-            <div className="flex items-center gap-4">
-              <a
-                href="mailto:billitrm@gmail.com"
-                className="flex items-center gap-1.5 hover:text-text-primary transition-colors text-[11px] sm:text-xs font-semibold"
-              >
-                <Mail size={12} className="text-brand-primary" />
-                <span>billitrm@gmail.com</span>
-              </a>
-              <span className="text-border/40 select-none">|</span>
-              <a
-                href="tel:+917305821333"
-                className="flex items-center gap-1.5 hover:text-text-primary transition-colors text-[11px] sm:text-xs font-semibold"
-              >
-                <Phone size={12} className="text-brand-primary" />
-                <span>+91 73058 21333</span>
-              </a>
-            </div>
-            <div className="hidden md:flex items-center gap-2 font-semibold text-text-tertiary">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Direct Support Desk</span>
-            </div>
-          </div>
+          <a
+            href="#pricing"
+            className="flex items-center justify-center text-center px-6 text-xs sm:text-sm font-bold text-white hover:underline leading-none"
+          >
+            {ANNOUNCEMENT_TEXT}
+          </a>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className={cn(
+          "max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300",
+          isScrolled ? "py-3.5" : "py-5"
+        )}>
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group select-none">
             <img
@@ -119,8 +105,27 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Action CTA */}
-          <div className="hidden lg:block">
+          {/* Action CTA & Contact info in navbar itself */}
+          <div className="hidden lg:flex items-center gap-6">
+            <div className="flex items-center gap-4 text-xs font-semibold text-text-secondary mr-2">
+              <a
+                href="mailto:billitrm@gmail.com"
+                className="flex items-center gap-1.5 text-text-secondary hover:text-brand-primary hover:scale-[1.03] transition-all duration-300"
+              >
+                <Mail size={13} className="text-brand-primary" />
+                <span>billitrm@gmail.com</span>
+              </a>
+              <span className="text-border/40 select-none">|</span>
+              <a
+                href="https://wa.me/917305821333"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-text-secondary hover:text-brand-accent hover:scale-[1.03] transition-all duration-300"
+              >
+                <Phone size={13} className="text-brand-accent" />
+                <span>73058 21333</span>
+              </a>
+            </div>
             <Button onClick={onOpenDemo} variant="primary" size="sm">
               Get Started Free
             </Button>
