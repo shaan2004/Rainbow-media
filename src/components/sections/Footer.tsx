@@ -18,7 +18,25 @@ const SEO_KEYWORDS = [
   "Affordable on-page seo optimization in Guindy",
   "Top 5 Digital marketing agencies in Guindy",
   "Top 15 Best Digital Marketing Agencies in Chennai",
-  "Top GMB and local SEO services in Guindy"
+  "Top GMB and local SEO services in Guindy",
+  "Best simple billing software in Chennai",
+  "GST billing made simple in Guindy Chennai",
+  "Easy billing software for small business",
+  "Smart invoicing software in Chennai",
+  "User-friendly billing software for retail shops",
+  "Simple GST invoice software in Chennai",
+  "Fast billing software for supermarkets",
+  "Inventory and billing software made simple",
+  "Cloud billing software for businesses in Chennai",
+  "Easy stock and billing management system",
+  "Affordable billing software in Guindy Chennai",
+  "Best billing software for startups",
+  "Digital billing solutions for local businesses",
+  "Simple accounting and billing software",
+  "Best retail billing system in Chennai",
+  "Billing software for medical shops and pharmacies",
+  "Modern billing software company in Chennai",
+  "Smart business billing solutions in Guindy"
 ];
 
 export function Footer() {
@@ -46,11 +64,11 @@ export function Footer() {
               </p>
               
               {/* Keywords Tag Cloud */}
-              <div className="flex flex-wrap gap-2 pt-2">
+              <div className="flex flex-wrap gap-1.5 max-h-32 sm:max-h-40 overflow-y-auto pr-1 pt-2 scrollbar-thin scrollbar-thumb-border/40 scrollbar-track-transparent">
                 {SEO_KEYWORDS.map((kw, kidx) => (
                   <span
                     key={kidx}
-                    className="inline-block text-[10px] sm:text-xs font-semibold text-text-secondary bg-surface-2 border border-border px-3 py-1.5 rounded-full hover:border-brand-primary/30 hover:text-brand-primary hover:bg-surface-3 transition-all duration-300 select-none cursor-pointer"
+                    className="inline-block text-[9px] sm:text-[10px] font-bold text-text-secondary bg-surface-2 border border-border px-2.5 py-1 rounded-lg hover:border-brand-primary/30 hover:text-brand-primary hover:bg-surface-3 transition-all duration-300 select-none cursor-pointer"
                   >
                     {kw}
                   </span>

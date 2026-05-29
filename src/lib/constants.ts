@@ -102,7 +102,7 @@ export const STATS = [
 export const PRICING_PLANS = [
   {
     name: "Basic",
-    price: { inr: 14999, usd: 155 },
+    price: { inr: 16999, usd: 175 },
     renewal: { inr: 5999, usd: 65 },
     description: "Perfect for single-register shops starting out their digital billing journey.",
     features: [
@@ -118,7 +118,7 @@ export const PRICING_PLANS = [
   },
   {
     name: "Standard",
-    price: { inr: 17999, usd: 180 },
+    price: { inr: 19999, usd: 200 },
     renewal: { inr: 6999, usd: 75 },
     description: "Our most popular plan designed for growing retail and wholesale outlets.",
     features: [
@@ -134,7 +134,7 @@ export const PRICING_PLANS = [
   },
   {
     name: "Advance",
-    price: { inr: 24999, usd: 240 },
+    price: { inr: 26999, usd: 260 },
     renewal: { inr: 7999, usd: 85 },
     description: "The ultimate power package for large businesses and multi-store operations.",
     features: [
